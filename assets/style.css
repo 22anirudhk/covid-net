@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+
+html {
+    width:100%;
+    height:100%;
+}
+
+#header {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-size:12px;
+}
+
+#description {
+    color:gray;
+    margin:0px;
+}
+
+body {
+    width:100%;
+    height:100%;
+    background-color:#FBD089;
+    font-family: 'Amiko', sans-serif;
+    
+    display:flex;
+    flex-direction:column;
+    
+    align-items:center;
+    
+    font-size:15px;
+}
+
+#website-name {
+    font-size:40px;
+}
+
+#everything {
+    width:100%;
+    height:100%;
+    background-color:#FBD089;
+    font-family: 'Amiko', sans-serif;
+    
+    display:flex;
+    flex-direction:column;
+    
+    align-items:center;
+}
+
+#content {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+#hopkins-link:link {
+    color:#FF9C5A;
+    text-decoration: none;
+}
+
+#hopkins-link:visited {
+    color:#FF9C5A;
+    text-decoration: none;
+}
+
+#hopkins-link:hover {
+    color:#F66349;
+    text-decoration: none;
+}
+
+a:link {
+    color:#F76249;
+    text-decoration: none;
+}
+
+a:visited {
+    color:#F76249;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#FF9C5A;
+    text-decoration: none;
+}
+
+#actual-footer {
+    margin-top:20px;
+}
+
+.github-name-text {
+    color:black;
+}
+
+
