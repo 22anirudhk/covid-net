@@ -5,7 +5,7 @@ rm -rf Data/state_data.csv
 git add .
 
 current_date=$(date +'%m/%d/%Y')
-git commit -m "Update predictions.${current_date}"
+git commit -m "Update predictions. ${current_date}"
 
 git push
 
