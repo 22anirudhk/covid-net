@@ -2,7 +2,7 @@ function createCard(state) {
     var card = document.createElement("div");
     card.id = state + "-card";
     card.className = "card";
-    
+     
         var caseInfoDiv = document.createElement("div");
         caseInfoDiv.id = state + "case-info";
         caseInfoDiv.className = "case-info";
