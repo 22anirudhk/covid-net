@@ -27,11 +27,11 @@ app = dash.Dash(__name__)
 server = app.server
 
 #There was unnamed:0 as a column so used index_col to ignore it.
-df = pd.read_csv('Data/state_data.csv', index_col=[0])
+df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/Hackathon-Secret/master/Data/state_data.csv', index_col=[0])
 columns = df.columns;
 
 #Get model predictions from csv.
-predicted_df = pd.read_csv('Data/predicted_states.csv', index_col=[0])
+predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/Hackathon-Secret/master/Data/predicted_data.csv', index_col=[0])
 
 #Create default figure to be California
 fig = px.line(df, x='Date', y=["California",  predicted_df["California Predict"]], title="COVID-19 Cases In " + "California")
