@@ -4,7 +4,7 @@
 # this script should not be run directly,
 # instead you need to source it from your .bashrc,
 # by adding this line:
-#   . ~/bin/update-data.sh
+#   . ~/update-data.sh
 #
 function update-data() {
   echo $(SHELL)
