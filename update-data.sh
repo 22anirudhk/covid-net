@@ -1,6 +1,6 @@
 #! /bin/bash
 
-pushd "/Hackathon-Secret"
+pushd /Hackathon-Secret
 
 mkdir "Yummy-Test"
 
@@ -15,5 +15,5 @@ git commit -m "Update predictions. ${current_date}"
 
 git push
 
-popd "/Hackathon-Secret"
+popd
 
