@@ -72,10 +72,10 @@ def get_cases(state_name):
   scaler = StandardScaler()
   phase_time = scaler.fit_transform(phase_time)
   cases = scaler.transform(cases).reshape(len(cases), 1)
-  print(f"Debugging Information: Max cases = {max(cases)}")
+#   print(f"Debugging Information: Max cases = {max(cases)}")
   
   
-  print(f"Length of cases & time arrays are {len(cases)}, {len(phase_time)}")
+#   print(f"Length of cases & time arrays are {len(cases)}, {len(phase_time)}")
   #plt.plot(np.squeeze(phase_time), np.squeeze(cases))
 
   return phase_time,cases, scaler
@@ -146,17 +146,18 @@ def graph_cases(given_model, phase_time, cases, delt, scaler):
   ax.plot(scaler.inverse_transform(xes), scaler.inverse_transform(yaxes))
   
   ax.plot(scaler.inverse_transform(phase_time),scaler.inverse_transform(cases))
-  print(f"Cases today was probably like {np.squeeze(scaler.inverse_transform(yaxes))[171]}")
+#   print(f"Cases today was probably like {np.squeeze(scaler.inverse_transform(yaxes))[171]}")
 
 
 def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_per_epoch=100, qverbose=2, graph=0, base_path="/content/drive/My Drive/"):
-  path = f"{base_path}{state_name}"
+#   path = f"{base_path}{state_name}"
+  path = str(base_path) + str(state_name)
   model = None
   #This try catch block either gets a preexisting model or creates a new one
   try:
     model = load_model(path)
-  except:
-    print(f"Path {path} not found, training new model for {state_name}")
+#   except:
+#     print(f"Path {path} not found, training new model for {state_name}")
   
   if (model == None):
     model = Sequential()
@@ -186,14 +187,15 @@ def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_
   
 
 
-  print(f"RUNNING TRAINING FOR {state_name}")
+#   print(f"RUNNING TRAINING FOR {state_name}")
   
   model.fit_generator(data_gen, steps_per_epoch=100, epochs=15, verbose=0)
 
 
-  filename = f"{state_name}"
-  print(f"TRAINING FOR {state_name} FINISHED, WRITING OUT MODEL TO FILE")
-  model.save(f"{base_path}{filename}")
+#   filename = f"{state_name}"
+  filename = str(state_name)
+#   print(f"TRAINING FOR {state_name} FINISHED, WRITING OUT MODEL TO FILE")
+  model.save(str(base_path) + str(filename)) #f"{base_path}{filename}")
   delt = abs(phase_time[1]-phase_time[0])
   if (graph == 1):
       graph_cases(model, phase_time, cases, delt, scaler)
@@ -221,7 +223,7 @@ try:
   run_entire_model()
 except Exception:
   full_tb = traceback.print_exc()
-  print(f"\n\n{full_tb}")
+#   print(f"\n\n{full_tb}")
   sys.exit(0)
 
 #Write outs
