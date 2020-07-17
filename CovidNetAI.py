@@ -235,6 +235,7 @@ except Exception:
 nan_frame = pd.DataFrame(index=range(30),columns=range(state_data.shape[1]))
 state_data = pd.concat(axis=0, objs=[state_data, nan_frame])
 state_data["Date"] = pd.date_range(start='1/22/2020', periods=len(state_data), freq='D')
+state_data = state_data.drop([i for i in range(54)], axis=1)
 state_data.to_csv("Data/state_data.csv", index=True)
 print(new_data)
 new_data.to_csv("Data/predicted_data.csv")
