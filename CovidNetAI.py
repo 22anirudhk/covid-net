@@ -149,7 +149,7 @@ def graph_cases(given_model, phase_time, cases, delt, scaler):
 #   print(f"Cases today was probably like {np.squeeze(scaler.inverse_transform(yaxes))[171]}")
 
 
-def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_per_epoch=100, qverbose=2, graph=0, base_path="/Models/"):
+def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_per_epoch=100, qverbose=2, graph=0, base_path="Models/"):
 #   path = f"{base_path}{state_name}"
   path = str(base_path) + str(state_name)
   model = None
