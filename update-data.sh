@@ -1,24 +1,21 @@
 #! /bin/bash
 
-#
-# this script should not be run directly,
-# instead you need to source it from your .bashrc,
-# by adding this line:
-#   . ~/update-data.sh
-#
-function update-data() {
-  echo $(SHELL)
+pushd "Hackathon-Secrets"
 
-  cd "Hackathon-Secret/"
+mkdir "Yummy-Test"
 
-  rm -rf "Data/state_data.csv"
+cd "Hackathon-Secret/"
 
-  python "CovidNetAI.py"
+rm -rf "Data/state_data.csv"
 
-  git add .
+python "CovidNetAI.py"
 
-  current_date=$(date +'%m/%d/%Y')
-  git commit -m "Update predictions. ${current_date}"
+git add .
 
-  git push
-}
+current_date=$(date +'%m/%d/%Y')
+git commit -m "Update predictions. ${current_date}"
+
+git push
+
+popd "Hackathon-Secrets"
+
