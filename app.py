@@ -12,13 +12,13 @@ import datetime
 import requests
 import json
 
-# Get some basic United States states from https://disease.sh
-response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
-responseJSON = response.json()
+## Get some basic United States states from https://disease.sh
+#response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
+#responseJSON = response.json()
 
-usCases = responseJSON['cases']
-usDeaths = responseJSON['deaths']
-usRecovered = responseJSON['recovered']
+usCases = 3 #responseJSON['cases']
+usDeaths = 4 #responseJSON['deaths']
+usRecovered = 5 #responseJSON['recovered']
 
 print("Cases: {} Deaths{} Recovered{}".format(usCases, usDeaths, usRecovered))
 
