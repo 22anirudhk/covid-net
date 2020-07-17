@@ -156,7 +156,8 @@ def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_
   #This try catch block either gets a preexisting model or creates a new one
   try:
     model = load_model(path)
-#   except:
+  except:
+    print("python 2.7?")
 #     print(f"Path {path} not found, training new model for {state_name}")
   
   if (model == None):
