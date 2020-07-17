@@ -1,4 +1,6 @@
-#cd Hackathon-Secret/
+#! /bin/bash
+
+cd Hackathon-Secret/
 
 rm -rf Data/state_data.csv
 
