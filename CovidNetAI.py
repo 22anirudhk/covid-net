@@ -216,9 +216,9 @@ def run_entire_model():
   nan_frame = pd.DataFrame(index=range(30),columns=range(state_data.shape[1]))
   state_data = pd.concat(axis=0, objs=[state_data, nan_frame])
   state_data["Date"] = pd.date_range(start='1/22/2020', periods=len(state_data), freq='D')
-  state_data.to_csv("state_data.csv", index=True)
+  state_data.to_csv("Data/state_data.csv", index=True)
   print(new_data)
-  new_data.to_csv("predicted_data.csv")
+  new_data.to_csv("Data/predicted_data.csv")
 
 import traceback
 import sys
