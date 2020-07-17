@@ -47,9 +47,6 @@ print(len(state_data["Arizona"]))
 data_frame = state_data 
 
 
-data_frame = data_frame[5:] #ignore puerto rico and stuff
-
-
 # General algorithmic functions I wrote for data preprocessing
 def normalize(data, maxnum):
   oned = np.squeeze(data)
