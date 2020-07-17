@@ -204,7 +204,8 @@ def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_
  
   predictslist = scaler.inverse_transform([single_predict(i, model, delt, scaler) for i in np.arange(phase_time[0],phase_time[0]+(len(cases)+30)*delt,delt)])
 
-  new_data[f'{state_name} Predict'] = np.squeeze(predictslist)
+#   new_data[f'{state_name} Predict'] = np.squeeze(predictslist)
+  new_data[state_name + ' Predict'] = np.squeeze(predictslist)
 
 
 
