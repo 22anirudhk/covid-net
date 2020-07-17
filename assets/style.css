@@ -53,42 +53,5 @@ body {
     justify-content:center;
 }
 
-#hopkins-link:link {
-    color:#FF9C5A;
-    text-decoration: none;
-}
-
-#hopkins-link:visited {
-    color:#FF9C5A;
-    text-decoration: none;
-}
-
-#hopkins-link:hover {
-    color:#F66349;
-    text-decoration: none;
-}
-
-a:link {
-    color:#F76249;
-    text-decoration: none;
-}
-
-a:visited {
-    color:#F76249;
-    text-decoration: none;
-}
-
-a:hover {
-    color:#FF9C5A;
-    text-decoration: none;
-}
-
-#actual-footer {
-    margin-top:20px;
-}
-
-.github-name-text {
-    color:black;
-}
 
 

@@ -1,0 +1,42 @@
+#credits-div {
+    color:#FF9C5A;
+    margin-bottom:0px;
+}
+
+.credits-link:link {
+    text-decoration: none;
+}
+
+.credits-link:visited {
+    color:#FF9C5A;
+    text-decoration: none;
+}
+
+.credits-link:hover {
+    color:#F66349;
+    text-decoration: none;
+}
+
+a:link {
+    color:#F76249;
+    text-decoration: none;
+}
+
+a:visited {
+    color:#F76249;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#FF9C5A;
+    text-decoration: none;
+}
+
+#actual-footer {
+    margin-top:25px;
+    margin-bottom:35px;
+}
+
+.github-name-text {
+    color:black;
+}
