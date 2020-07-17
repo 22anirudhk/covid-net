@@ -17,8 +17,8 @@ import numpy as np
 
 
 
-np.random.seed(42)
-tf.random.set_seed(42)
+# np.random.seed(42)
+# tf.random.set_seed(42)
 print(tf.__version__)
 
 # drive.mount("/content/drive")
