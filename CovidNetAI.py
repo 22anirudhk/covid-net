@@ -63,7 +63,7 @@ def denormalize(norm_data, max_d, min_d):
   return denormalized_d
 
 #Plot cases for a given state
-def get_cases(state_name:str):
+def get_cases(state_name):
   dates = pd.to_datetime(data_frame["Date"])
   cases =  data_frame[state_name]
   cases = np.array(cases.values).reshape(len(cases), 1)
