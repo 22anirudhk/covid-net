@@ -153,9 +153,10 @@ def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_
   #This try catch block either gets a preexisting model or creates a new one
   try:
     model = load_model(path)
+    print("Model {} found, continuing training".format(path))
   except:
-    print("python 2.7?")
-#     print(f"Path {path} not found, training new model for {state_name}")
+    #print("python 2.7?")
+    print("Path {} not found, training new model for {}".format(path, state_name))
   
   if (model == None):
     model = Sequential()
@@ -185,14 +186,14 @@ def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_
   
 
 
-#   print(f"RUNNING TRAINING FOR {state_name}")
+  print("RUNNING TRAINING FOR {}".format(state_name))
   
   model.fit_generator(data_gen, steps_per_epoch=100, epochs=15, verbose=0)
 
 
 #   filename = f"{state_name}"
   filename = str(state_name)
-#   print(f"TRAINING FOR {state_name} FINISHED, WRITING OUT MODEL TO FILE")
+  print("TRAINING FOR {} FINISHED, WRITING OUT MODEL TO FILE".format(state_name))
   model.save(str(base_path) + str(filename)) #f"{base_path}{filename}")
   delt = abs(phase_time[1]-phase_time[0])
   if (graph == 1):
