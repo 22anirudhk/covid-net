@@ -13,12 +13,12 @@ import requests
 import json
 
 # Get some basic United States states from https://disease.sh
-response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
-responseJSON = response.json()
+#response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
+#responseJSON = response.json()
 
-usCases = responseJSON['cases']
-usDeaths = responseJSON['deaths']
-usRecovered = responseJSON['recovered']
+usCases = 5 #responseJSON['cases']
+usDeaths =  4 # responseJSON['deaths']
+usRecovered = 321 # responseJSON['recovered']
 
 print("Cases: {} Deaths{} Recovered{}".format(usCases, usDeaths, usRecovered))
 
