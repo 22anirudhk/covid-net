@@ -172,7 +172,7 @@ def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_
 
   #Data preprocessing block
   phase_time, cases, scaler = get_cases(state_name)
-  plt.plot(phase_time, cases)
+#   plt.plot(phase_time, cases)
   print(max(scaler.inverse_transform(cases)))
 
 
