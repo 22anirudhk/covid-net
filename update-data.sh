@@ -1,8 +1,6 @@
 #! /bin/bash
 
-pushd Hackathon-Secret
-
-mkdir "Yummy-Test"
+pushd /home/akotamraju/Hackathon-Secret
 
 rm -rf "Data/state_data.csv"
 
