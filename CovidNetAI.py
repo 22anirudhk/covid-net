@@ -133,11 +133,11 @@ def graph_cases(given_model, phase_time, cases, delt, scaler):
   predictions = [single_predict(i, given_model, delt, scaler) for i in x_axis]
 
   #print(np.squeeze(predictions))
-  fig, ax = plt.subplots()
-  yaxes = np.squeeze(predictions)
-  xes = x_axis[:len(yaxes)]
+#   fig, ax = plt.subplots()
+#   yaxes = np.squeeze(predictions)
+#   xes = x_axis[:len(yaxes)]
 
-  plt.figure()
+#   plt.figure()
   
                     
   #n = int(input("What day past January 22nd do you want to predict coronavirus cases for the state of {?"))
