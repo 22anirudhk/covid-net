@@ -2,7 +2,7 @@
 
 pushd "/Hackathon-Secret"
 
-cd "Hackathon-Secret/"
+mkdir "Yummy-Test"
 
 rm -rf "Data/state_data.csv"
 
