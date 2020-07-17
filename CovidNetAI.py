@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 import tensorflow as tf
 import numpy as np
-from google.colab import drive
+# from google.colab import drive
 
 
 
@@ -21,7 +21,7 @@ np.random.seed(42)
 tf.random.set_seed(42)
 print(tf.__version__)
 
-drive.mount("/content/drive")
+# drive.mount("/content/drive")
 data_frame = pd.read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv")
 data_frame = data_frame[5:] #ignore puerto rico and stuff
 dates = pd.to_datetime(data_frame.columns[11:])#Dates
