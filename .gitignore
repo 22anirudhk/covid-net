@@ -1,4 +1,4 @@
-env/
+env/ 
 venv/
 main.js
 note.txt
