@@ -210,7 +210,7 @@ def run_entire_model():
   print(len(total_states))
 
   for state in total_states:
-    run_state_model(state, graph=1)
+    run_state_model(state, graph=0)
   
   
 
