@@ -1,6 +1,6 @@
 #! /bin/bash
 
-pushd /Hackathon-Secret
+pushd Hackathon-Secret/
 
 mkdir "Yummy-Test"
 
