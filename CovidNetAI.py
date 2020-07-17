@@ -143,13 +143,13 @@ def graph_cases(given_model, phase_time, cases, delt, scaler):
   #n = int(input("What day past January 22nd do you want to predict coronavirus cases for the state of {?"))
   #print(f"Prediction for day {n} of coronavirus outbreak returned approximately {int(single_predict(n, model))} cases")
 
-  ax.plot(scaler.inverse_transform(xes), scaler.inverse_transform(yaxes))
+  #ax.plot(scaler.inverse_transform(xes), scaler.inverse_transform(yaxes))
   
-  ax.plot(scaler.inverse_transform(phase_time),scaler.inverse_transform(cases))
+  #ax.plot(scaler.inverse_transform(phase_time),scaler.inverse_transform(cases))
 #   print(f"Cases today was probably like {np.squeeze(scaler.inverse_transform(yaxes))[171]}")
 
 
-def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_per_epoch=100, qverbose=2, graph=0, base_path="Models/"):
+def run_state_model(state_name, batch_size = 5, n_input = 5, num_epochs=25, num_per_epoch=100, qverbose=2, graph=0, base_path="/Models/"):
 #   path = f"{base_path}{state_name}"
   path = str(base_path) + str(state_name)
   model = None
@@ -214,6 +214,9 @@ def run_entire_model():
   print(len(total_states))
 
   for state in total_states:
+    #if you want to cut short, uncomment this if statement
+    if state == "Colorado":
+        break
     run_state_model(state, graph=0)
   
   
