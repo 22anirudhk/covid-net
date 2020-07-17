@@ -10,7 +10,6 @@ import plotly.express as px
 import pandas as pd
 import datetime 
 import requests
-import json
 
 # Get some basic United States states from https://disease.sh
 response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
