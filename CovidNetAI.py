@@ -215,8 +215,8 @@ def run_entire_model():
 
   for state in total_states:
     #if you want to cut short, uncomment this if statement
-    if state == "Colorado":
-        break
+#     if state == "Colorado":
+#         break
     run_state_model(state, graph=0)
   
   
