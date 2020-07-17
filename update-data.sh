@@ -1,10 +1,10 @@
 #! /bin/bash
 
-cd Hackathon-Secret/
+cd "Hackathon-Secret/"
 
-rm -rf Data/state_data.csv
+rm -rf "Data/state_data.csv"
 
-python CovidNetAI.py
+python "CovidNetAI.py"
 
 git add .
 
