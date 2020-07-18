@@ -27,11 +27,11 @@ app = dash.Dash(__name__)
 server = app.server
 
 #There was unnamed:0 as a column so used index_col to ignore it.
-df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/Hackathon-Secret/master/Data/state_data.csv', index_col=[0])
+df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/state_data.csv', index_col=[0])
 columns = df.columns;
 
 #Get model predictions from csv.
-predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/Hackathon-Secret/master/Data/predicted_data.csv', index_col=[0])
+predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/predicted_data.csv', index_col=[0])
 
 #Create default figure to be California
 fig = px.line(df, x='Date', y=["California",  predicted_df["California Predict"]], title="COVID-19 Cases In " + "California")
@@ -122,6 +122,22 @@ app.layout = html.Div([
 
 #Updates the graph based on the new state chosen
 def update_graph(state_column):
+    #Get data from github and disease.sh to ensure most up to date version (heroku app only run once so this is best way to update data)
+    df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/state_data.csv', index_col=[0])
+    columns = df.columns;
+
+    #Get model predictions from csv.
+    predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/predicted_data.csv', index_col=[0])
+    
+    response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
+    responseJSON = response.json()
+
+    usCases = responseJSON['cases']
+    usDeaths = responseJSON['deaths']
+    usRecovered = responseJSON['recovered']
+    print("Updating data & graph.")
+    
+    
     fig = px.line(df, x=df['Date'], y=[df[state_column], predicted_df[state_column + " Predict"]], title="COVID-19 Cases In " + str(state_column))
     
     #Calculate difference between today and Jan 22 
