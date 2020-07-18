@@ -11,15 +11,17 @@ import pandas as pd
 import datetime 
 import requests
 
+current_date = str(datetime.datetime.today())
+
 # Get some basic United States states from https://disease.sh
 response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
 responseJSON = response.json()
 
-usCases = responseJSON['cases']
-usDeaths = responseJSON['deaths']
-usRecovered = responseJSON['recovered']
+US_cases = str('{:,}'.format(responseJSON['cases'])) + " US Cases"
+US_deaths = str('{:,}'.format(responseJSON['deaths'])) + " US Deaths"
+US_recovered = str('{:,}'.format(responseJSON['recovered'])) + " US Recovered"
 
-print("Cases: {} Deaths{} Recovered{}".format(usCases, usDeaths, usRecovered))
+print("Cases: {} Deaths: {} Recovered: {}".format(US_cases, US_deaths, US_recovered))
 
 
 #Create Dash App
@@ -32,6 +34,9 @@ columns = df.columns;
 
 #Get model predictions from csv.
 predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/predicted_data.csv', index_col=[0])
+
+#Calculate date when last updated
+lastUpdated = current_date[0:10] 
 
 #Create default figure to be California
 fig = px.line(df, x='Date', y=["California",  predicted_df["California Predict"]], title="COVID-19 Cases In " + "California")
@@ -54,11 +59,11 @@ app.layout = html.Div([
                 ], id="state-name-div"),
                 html.Div([
                     html.H2("Tomorrow", className="case-info-heading"),
-                    html.H3("N/A cases", id = "tomorrow-cases"),
+                    html.H3("", id = "tomorrow-cases"),
                     html.H2("After 3 Days", className="case-info-heading"),
-                    html.H3("N/A cases", id = "three-days-cases"),
+                    html.H3("", id = "three-days-cases"),
                     html.H2("After One Week", className="case-info-heading"),
-                    html.H3("N/A cases", id = "week-cases")
+                    html.H3("", id = "week-cases")
                 ], className = "actual-info-div")
             ], id="California-case-info", className="case-info"),
             
@@ -86,18 +91,23 @@ app.layout = html.Div([
 
     #Display the United States stats from https://disease.sh
     html.Div([
-            html.H3(str('{:,}'.format(usCases)) + " US Cases", id = "us-cases", className = "US-stat"),
-            html.H3(str('{:,}'.format(usDeaths)) + " US Deaths", id = "us-deaths", className = "US-stat"),
-            html.H3(str('{:,}'.format(usRecovered)) + " US Recovered", id = "us-recovered", className = "US-stat")
+            html.H3(US_cases, id = "us-cases", className = "US-stat"),
+            html.H3(US_deaths, id = "us-deaths", className = "US-stat"),
+            html.H3(US_recovered, id = "us-recovered", className = "US-stat")
     ], id="other-stats-div"),
     
     #Display credits for where data was compiled from.
     html.Div([
-            html.A("Data Compiled From Johns Hopkins CSSE", href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series", id = "hopkins-link", target="_blank", className="credits-link"),
+        html.Span("Data Compiled From "),
+        html.A("Johns Hopkins CSSE", href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series", id = "hopkins-link", target="_blank", className="credits-link"),
             
-            html.Span(" and "),
+        html.Span(" and "),
             
-            html.A("disease.sh", href="https://disease.sh", id = "disease-link", target="_blank", className="credits-link")
+        html.A("disease.sh", href="https://disease.sh", id = "disease-link", target="_blank", className="credits-link"),
+        
+        html.Span(" (Last Updated "),
+        html.Span("", id = "last-updated"),
+        html.Span(")"),
             
     ], id = "credits-div"),
     
@@ -116,7 +126,11 @@ app.layout = html.Div([
      Output('state_name', component_property='children'), 
     Output('tomorrow-cases', component_property='children'),
     Output('three-days-cases', component_property='children'),
-    Output('week-cases', component_property='children')],
+    Output('week-cases', component_property='children'),
+    Output('us-cases', 'children'),
+    Output('us-deaths', 'children'),
+    Output('us-recovered', 'children'),
+    Output('last-updated', 'children')],
     [Input('state_column', 'value')]
 )
 
@@ -132,9 +146,9 @@ def update_graph(state_column):
     response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
     responseJSON = response.json()
 
-    usCases = responseJSON['cases']
-    usDeaths = responseJSON['deaths']
-    usRecovered = responseJSON['recovered']
+    updated_US_cases = str('{:,}'.format(responseJSON['cases'])) + " US Cases"
+    updated_US_deaths = str('{:,}'.format(responseJSON['deaths'])) + " US Deaths"
+    updated_US_recovered = str('{:,}'.format(responseJSON['recovered'])) + " US Recovered"
     print("Updating data & graph.")
     
     
@@ -155,9 +169,12 @@ def update_graph(state_column):
     three = str(int(predict_state_df.iloc[day_num + 3])) + " cases"
     week = str(int(predict_state_df.iloc[day_num + 7])) + " cases"
     
+    #Get last updated date
+    lastUpdated = str(current_date)[0:10] 
+    
     fig.update_layout(showlegend=False)
 
-    return fig, state_column, tomorrow, three, week
+    return fig, state_column, tomorrow, three, week, updated_US_cases, updated_US_deaths, updated_US_recovered, lastUpdated
 
 if __name__ == '__main__':
     app.run_server(debug=True)
