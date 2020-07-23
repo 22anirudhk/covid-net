@@ -35,12 +35,10 @@ columns = df.columns;
 
 #Get model predictions from csv.
 predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/predicted_data.csv', index_col=[0])
-<<<<<<< HEAD
 
 #Calculate date when last updated
 lastUpdated = current_date[0:10] 
-=======
->>>>>>> c6e2df612601651cb7335fe2e3bc650a15aa0db7
+
 
 #Create default figure to be California
 fig = px.line(df, x='Date', y=["California",  predicted_df["California Predict"]], title="COVID-19 Cases In " + "California")
@@ -150,15 +148,9 @@ def update_graph(state_column):
     response = requests.get('https://disease.sh/v3/covid-19/countries/USA')
     responseJSON = response.json()
 
-<<<<<<< HEAD
     updated_US_cases = str('{:,}'.format(responseJSON['cases'])) + " US Cases"
     updated_US_deaths = str('{:,}'.format(responseJSON['deaths'])) + " US Deaths"
     updated_US_recovered = str('{:,}'.format(responseJSON['recovered'])) + " US Recovered"
-=======
-    usCases = responseJSON['cases']
-    usDeaths = responseJSON['deaths']
-    usRecovered = responseJSON['recovered']
->>>>>>> c6e2df612601651cb7335fe2e3bc650a15aa0db7
     print("Updating data & graph.")
     
     
