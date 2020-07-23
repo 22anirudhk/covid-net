@@ -24,6 +24,7 @@ US_recovered = str('{:,}'.format(responseJSON['recovered'])) + " US Recovered"
 print("Cases: {} Deaths: {} Recovered: {}".format(US_cases, US_deaths, US_recovered))
 
 
+
 #Create Dash App
 app = dash.Dash(__name__)
 server = app.server
