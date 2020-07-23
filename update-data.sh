@@ -2,6 +2,8 @@
 
 pushd /home/akotamraju/Hackathon-Secret
 
+git pull | git merge --no-edit
+
 rm -rf "Data/state_data.csv"
 
 python "CovidNetAI.py"
