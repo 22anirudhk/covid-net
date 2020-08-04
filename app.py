@@ -168,9 +168,10 @@ def update_graph(state_column):
     #Get the predictions for this amount of time ahead
     predict_state_df = predicted_df[state_column + " Predict"]
     
-    tomorrow = str(int(predict_state_df.iloc[day_num + 1])) + " cases"
-    three = str(int(predict_state_df.iloc[day_num + 3])) + " cases"
-    week = str(int(predict_state_df.iloc[day_num + 7])) + " cases"
+    
+    tomorrow = str('{:,}'.format(int(predict_state_df.iloc[day_num + 1]))) + " cases"
+    three = str('{:,}'.format(int(predict_state_df.iloc[day_num + 3]))) + " cases"
+    week = str('{:,}'.format(int(predict_state_df.iloc[day_num + 7]))) + " cases"
     
     #Get last updated date
     lastUpdated = str(current_date)[0:10] 
