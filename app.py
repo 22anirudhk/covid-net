@@ -38,7 +38,7 @@ columns = df.columns;
 predicted_df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/predicted_data.csv', index_col=[0])
 
 #Sometimes predictions go one day ahead due to issue with Virtual Machine timezones.
-predicted_df = predicted_df([0: df.shape[0]],[0:]) 
+predicted_df = predicted_df.iloc([0: df.shape[0]],[0:]) 
 
 #Calculate date when last updated
 lastUpdated = current_date[0:10] 
