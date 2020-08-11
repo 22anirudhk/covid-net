@@ -45,7 +45,7 @@ lastUpdated = current_date[0:10]
 
 
 #Create default figure to be California
-fig = px.line(df, x='Date', y=["California",  predicted_df["California Predict"]], title="COVID-19 Cases In " + "California")
+fig = px.line(df, x='Date', y=["Arizona",  predicted_df["Arizona Predict"]], title="COVID-19 Cases In Arizona")
 fig.update_layout(showlegend=False)
 
 #Create dash app
@@ -71,14 +71,14 @@ app.layout = html.Div([
                     html.H2("After One Week", className="case-info-heading"),
                     html.H3("", id = "week-cases")
                 ], className = "actual-info-div")
-            ], id="California-case-info", className="case-info"),
+            ], className="case-info"),
             
             #Display Graph and State Dropdown Picker
             html.Div([
                 dcc.Dropdown(
                     id='state_column',
                     options=[{'label': i, 'value': i} for i in columns],
-                    value='California'
+                    value='Arizona'
                 ),
                 html.Div([
                     dcc.Graph(
