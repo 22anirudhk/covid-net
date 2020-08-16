@@ -1,5 +1,7 @@
-## covidNet by Anirudh Kotamraju and Kailash Ranganathan 
+# covidNet by Anirudh Kotamraju and Kailash Ranganathan 
 ### A Deep Learning Powered Coronavirus Visualization and Prediction Software
+## 2nd Place Winner of Harmony Hacks 2! 🎉 
+https://devpost.com/software/covidnet-jq97oa
 
 <img src = "Images/top-half.png" alt = "Top Half of Website"> 
 <img src = "Images/new-bottom-half.png" alt = "Top Half of Website"> 
