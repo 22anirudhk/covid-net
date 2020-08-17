@@ -30,6 +30,37 @@ print("Cases: {} Deaths: {} Recovered: {}".format(US_cases, US_deaths, US_recove
 app = dash.Dash(__name__)
 server = app.server
 
+#Modify base dash HTML template to add Google Analytics Script Tag
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>covidNet</title>
+        {%css%}
+        {%favicon%}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175556625-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-175556625-1');
+        </script>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+'''
+
+#Get the state_data
 #There was unnamed:0 as a column so used index_col to ignore it.
 df = pd.read_csv('https://raw.githubusercontent.com/22anirudhk/covidnet-v2/master/Data/state_data.csv', index_col=[0])
 columns = df.columns;
@@ -48,7 +79,7 @@ lastUpdated = current_date[0:10]
 fig = px.line(df, x='Date', y=["Arizona",  predicted_df["Arizona Predict"]], title="COVID-19 Cases In Arizona")
 fig.update_layout(showlegend=False)
 
-#Create dash app
+#Create dash lahout
 app.layout = html.Div([    
     #Title and short description
     html.H1("covidNet", id = "website-name"),
