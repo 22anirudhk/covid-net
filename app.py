@@ -49,7 +49,7 @@ fig = px.line(df, x='Date', y=["Arizona",  predicted_df["Arizona Predict"]], tit
 fig.update_layout(showlegend=False)
 
 #Create dash app
-app.layout = html.Div([
+app.layout = html.Div([    
     #Title and short description
     html.H1("covidNet", id = "website-name"),
     html.H2("RNN powered COVID-19 Prediction", id = "description"),
